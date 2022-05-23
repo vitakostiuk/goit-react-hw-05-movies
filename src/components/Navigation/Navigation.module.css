@@ -1,0 +1,23 @@
+.Navigation {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.Link {
+  display: block;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: #1a1a1a;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.Link:not(:last-child) {
+  border-right: 1px solid #1a1a1a;
+}
+
+.ActiveLink {
+  color: #003cff;
+}
