@@ -12,11 +12,11 @@ export const fetchTrending = async () => {
   return Promise.reject(new Error(`Something went wrong`));
 };
 
-export const fetchMovieById = async id => {
-  const response = await fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`);
-  console.log(response);
-  if (response.ok) {
-    return response.json();
-  }
-  return Promise.reject(new Error(`Something went wrong`));
-};
+// export const fetchMovieById = async id => {
+//   const response = await fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`);
+//   console.log(response);
+//   if (response.ok) {
+//     return response.json();
+//   }
+//   return Promise.reject(new Error(`Something went wrong`));
+// };

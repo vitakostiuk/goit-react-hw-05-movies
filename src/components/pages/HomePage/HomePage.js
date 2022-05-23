@@ -11,7 +11,7 @@ export const HomePage = () => {
     const getMoviesTrending = async () => {
       try {
         let data = await fetchTrending();
-        // console.log(data);
+        console.log(data);
         setMovies(mapper(data.results));
       } catch (error) {
         console.log(error);

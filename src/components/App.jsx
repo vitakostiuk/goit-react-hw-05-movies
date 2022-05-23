@@ -1,9 +1,9 @@
 import { Switch, Route } from 'react-router-dom';
 import { Header } from './Header';
 import { HomePage } from './pages/HomePage';
-import { MoviesPage } from './pages/MoviesPage';
-import { MovieDetailsPage } from './pages/MovieDetailsPage';
-import { NotFound } from './pages/NotFound';
+// import { MoviesPage } from './pages/MoviesPage';
+// import { MovieDetailsPage } from './pages/MovieDetailsPage';
+// import { NotFound } from './pages/NotFound';
 
 export const App = () => {
   return (
@@ -15,7 +15,7 @@ export const App = () => {
           <HomePage />
         </Route>
 
-        <Route path="/movies" exact>
+        {/* <Route path="/movies" exact>
           <MoviesPage />
         </Route>
 
@@ -25,7 +25,7 @@ export const App = () => {
 
         <Route>
           <NotFound />
-        </Route>
+        </Route> */}
       </Switch>
     </div>
   );
