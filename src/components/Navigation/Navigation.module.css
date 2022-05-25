@@ -1,10 +1,9 @@
-/* .Navigation {
+.Navigation {
   display: flex;
-  justify-content: start;
   align-items: center;
-} */
+}
 
-/* .Link {
+.Link {
   display: block;
   padding-left: 10px;
   padding-right: 10px;
@@ -12,12 +11,12 @@
   text-decoration: none;
   font-size: 17px;
   font-weight: 500;
-} */
+}
 
-/* .Link:not(:last-child) {
+.Link:not(:last-child) {
   border-right: 1px solid #1a1a1a;
 }
 
 .Active {
   color: #003cff;
-} */
+}

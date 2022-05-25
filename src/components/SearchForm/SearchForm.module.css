@@ -1,0 +1,30 @@
+.Form {
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+.Button {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 50%;
+  left: 1%;
+  transform: translateY(-50%);
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+  cursor: pointer;
+}
+
+.Input {
+  height: 28px;
+  min-width: 200px;
+  padding-left: 35px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  outline: #7a7a7a;
+}
+
+.Input::placeholder {
+  color: #7a7a7a;
+}
