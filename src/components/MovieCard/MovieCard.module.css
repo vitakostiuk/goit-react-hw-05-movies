@@ -1,0 +1,21 @@
+.Wrapper {
+  display: flex;
+}
+
+.Thumb {
+  display: block;
+  width: 500px;
+  margin-left: 10px;
+}
+
+.Img {
+  margin-bottom: 10px;
+}
+
+.Subtitle {
+  margin-bottom: 8px;
+}
+
+.Paragraf {
+  margin: 0;
+}

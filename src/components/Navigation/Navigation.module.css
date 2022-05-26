@@ -14,6 +14,10 @@
 }
 
 .Link:not(:last-child) {
+  padding-left: 0;
+}
+
+.Link:first-child {
   border-right: 1px solid #1a1a1a;
 }
 

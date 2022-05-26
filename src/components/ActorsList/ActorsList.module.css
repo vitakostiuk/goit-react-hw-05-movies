@@ -1,0 +1,29 @@
+.List {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.Item {
+  width: 150px;
+  margin-right: 15px;
+  margin-top: 15px;
+  text-decoration: none;
+  color: #1a1a1a;
+}
+
+.Title {
+  font-size: 15px;
+  font-weight: 700;
+  padding: 0;
+  margin: 0;
+}
+
+.paragraf {
+  font-size: 15px;
+  padding: 0;
+  margin: 0;
+}

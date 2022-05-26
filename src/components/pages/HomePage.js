@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { fetchTrending } from '../../services/movies-api';
-import { BookList } from '../../BookList';
-import { mapper } from '../../utils/mapper';
-// import s from './HomePage.module.css';
+import { fetchTrending } from '../services/movies-api';
+import { MoviesList } from '../MoviesList';
+import { Container } from '../Container';
+import { mapper } from '../utils/mapper';
 
 export const HomePage = () => {
   const [movies, setMovies] = useState([]);
@@ -11,7 +11,6 @@ export const HomePage = () => {
     const getMoviesTrending = async () => {
       try {
         let data = await fetchTrending();
-        console.log(data.results);
         setMovies(mapper(data.results));
       } catch (error) {
         console.log(error);
@@ -21,8 +20,8 @@ export const HomePage = () => {
   }, []);
 
   return (
-    <>
-      <BookList movies={movies} />
-    </>
+    <Container>
+      <MoviesList movies={movies} />
+    </Container>
   );
 };

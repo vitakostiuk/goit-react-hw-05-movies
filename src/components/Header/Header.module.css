@@ -1,14 +1,14 @@
 .Header {
   display: block;
-  width: 100vw;
+  width: 100%;
   height: 100%;
-  padding: 20px;
+
   background-image: linear-gradient(to bottom, #6fedfd, rgb(252, 255, 54));
 }
 
 .Back {
   display: inline-block;
-  padding: 10px;
+  margin-bottom: 10px;
   color: #1a1a1a;
   text-decoration: none;
   font-size: 13px;
