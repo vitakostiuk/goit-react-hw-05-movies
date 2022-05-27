@@ -38,7 +38,7 @@ const MoviesPage = () => {
   return (
     <Container>
       <SearchForm onSubmit={onSearchFilmsSubmit} />
-      {movies && <MoviesList movies={movies} />}
+      {movies && <MoviesList movies={movies} location={location} />}
       {error && <div>{error.message}</div>}
     </Container>
   );

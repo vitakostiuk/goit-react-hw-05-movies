@@ -2,12 +2,17 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import s from './MoviesList.module.css';
 
-export const MoviesList = ({ movies }) => {
+export const MoviesList = ({ movies, location }) => {
+  // console.log(location);
   return (
     <ul className={s.List}>
       {movies &&
         movies.map(({ id, normalizedTitle, normalizedPoster }) => (
-          <Link to={`/movies/${id}`} key={id} className={s.Item}>
+          <Link
+            to={{ pathname: `/movies/${id}`, state: { from: location } }}
+            key={id}
+            className={s.Item}
+          >
             <div className={s.Wrapper}>
               <img
                 src={normalizedPoster}

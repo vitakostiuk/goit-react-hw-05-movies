@@ -5,6 +5,7 @@ import {
   NavLink,
   useParams,
   useHistory,
+  useLocation,
 } from 'react-router-dom';
 import { fetchMovieById } from '../services/movies-api';
 import { MovieCard } from '../MovieCard';
@@ -26,9 +27,11 @@ const MovieDetailsPage = () => {
 
   const { movieId } = useParams();
   const { url, path } = useRouteMatch();
-  // console.log(url);
+  console.log(url);
   const history = useHistory();
+  const location = useLocation();
   // console.log(history);
+  console.log(location);
 
   useEffect(() => {
     const fetchMovieInfo = async () => {
@@ -67,19 +70,15 @@ const MovieDetailsPage = () => {
   }, [movieId]);
 
   const onClickGoBack = () => {
-    history.push('/');
+    history.push(location?.state?.from ?? '/movies');
   };
-
-  // const onClickGoBack = () => {
-  //   history.push(`${url}/${search}`);
-  // };
 
   return (
     <>
       {error && <div>{error.message}</div>}
       <Container>
         <GoToBack onClick={onClickGoBack} />
-        {movie && <MovieCard movie={movie} onClick={onClickGoBack} />}
+        {movie && <MovieCard movie={movie} />}
         <div className={s.Wrapper}>
           <NavLink
             to={`${url}/cast`}
@@ -98,10 +97,10 @@ const MovieDetailsPage = () => {
         </div>
         <Suspense fallback={<div>Loading...</div>}>
           <Route path={`${path}/cast`}>
-            <Cast />
+            <Cast location={location} />
           </Route>
           <Route path={`${path}/reviews`}>
-            <Reviews />
+            <Reviews location={location} />
           </Route>
         </Suspense>
       </Container>

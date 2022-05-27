@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+
 import s from './GoToBack.module.css';
 
 export const GoToBack = ({ onClick }) => (
-  <Link to="" className={s.Back}>
+  <button type="button" className={s.Back} onClick={onClick}>
     &#10094; Go back
-  </Link>
+  </button>
 );
 
 GoToBack.propTypes = {
