@@ -23,16 +23,11 @@ export const MoviesList = ({ movies }) => {
 };
 
 MoviesList.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      normalizedTitle: PropTypes.string,
+      normalizedPoster: PropTypes.string,
+      id: PropTypes.number,
+    })
+  ).isRequired,
 };
-
-// MovieCard.propTypes = {
-//   movie: PropTypes.shape({
-//     title: PropTypes.string,
-//     poster_path: PropTypes.string,
-//     overview: PropTypes.string,
-//     normalizedGenres: PropTypes.string,
-//     normalizedYear: PropTypes.number,
-//     normalizedPopularity: PropTypes.number,
-//   }).isRequired,
-// };

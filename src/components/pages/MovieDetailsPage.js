@@ -15,7 +15,7 @@ export const MovieDetailsPage = () => {
   const [movie, setMovie] = useState({});
   const [error, setError] = useState(null);
 
-  const { url } = useRouteMatch();
+  const { url, path } = useRouteMatch();
 
   useEffect(() => {
     const fetchMovieInfo = async () => {
@@ -74,10 +74,10 @@ export const MovieDetailsPage = () => {
             Reviews
           </NavLink>
         </div>
-        <Route path="/movies/:movieId/cast">
+        <Route path={`${path}/cast`}>
           <Cast />
         </Route>
-        <Route path="/movies/:movieId/reviews">
+        <Route path={`${path}/reviews`}>
           <Reviews />
         </Route>
       </Container>

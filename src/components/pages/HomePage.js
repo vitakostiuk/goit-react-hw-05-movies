@@ -6,6 +6,7 @@ import { mapper } from '../utils/mapper';
 
 export const HomePage = () => {
   const [movies, setMovies] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const getMoviesTrending = async () => {
@@ -13,7 +14,7 @@ export const HomePage = () => {
         let data = await fetchTrending();
         setMovies(mapper(data.results));
       } catch (error) {
-        console.log(error);
+        setError(error);
       }
     };
     getMoviesTrending();
@@ -21,6 +22,7 @@ export const HomePage = () => {
 
   return (
     <Container>
+      {error && <div>{error.message}</div>}
       <MoviesList movies={movies} />
     </Container>
   );

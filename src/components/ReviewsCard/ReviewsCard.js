@@ -7,11 +7,11 @@ export const ReviewsCard = ({ reviews }) => {
   }
   return (
     <ul className={s.List}>
-      {reviews.map(({ author_details, content, id }) => (
+      {reviews.map(({ normalizedName, content, id }) => (
         <li key={id} className={s.Item}>
           <p>
             <span className={s.Title}>Author: </span>
-            {author_details.name}
+            {normalizedName}
           </p>
           <p className={s.Paragraf}>{content}</p>
         </li>
@@ -21,16 +21,11 @@ export const ReviewsCard = ({ reviews }) => {
 };
 
 ReviewsCard.propTypes = {
-  reviews: PropTypes.arrayOf(PropTypes.object).isRequired,
+  reviews: PropTypes.arrayOf(
+    PropTypes.shape({
+      content: PropTypes.string,
+      id: PropTypes.string,
+      normalizedName: PropTypes.string,
+    })
+  ).isRequired,
 };
-
-// MovieCard.propTypes = {
-//   movie: PropTypes.shape({
-//     title: PropTypes.string,
-//     poster_path: PropTypes.string,
-//     overview: PropTypes.string,
-//     normalizedGenres: PropTypes.string,
-//     normalizedYear: PropTypes.number,
-//     normalizedPopularity: PropTypes.number,
-//   }).isRequired,
-// };

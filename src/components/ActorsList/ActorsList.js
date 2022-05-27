@@ -25,16 +25,12 @@ export const ActorsList = ({ credits }) => {
 };
 
 ActorsList.propTypes = {
-  credits: PropTypes.arrayOf(PropTypes.object).isRequired,
+  credits: PropTypes.arrayOf(
+    PropTypes.shape({
+      character: PropTypes.string,
+      name: PropTypes.string,
+      normalizedPoster: PropTypes.string,
+      id: PropTypes.number,
+    })
+  ).isRequired,
 };
-
-// MovieCard.propTypes = {
-//   movie: PropTypes.shape({
-//     title: PropTypes.string,
-//     poster_path: PropTypes.string,
-//     overview: PropTypes.string,
-//     normalizedGenres: PropTypes.string,
-//     normalizedYear: PropTypes.number,
-//     normalizedPopularity: PropTypes.number,
-//   }).isRequired,
-// };
