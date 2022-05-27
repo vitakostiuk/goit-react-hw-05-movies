@@ -1,6 +1,6 @@
 .List {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   flex-wrap: wrap;
   list-style-type: none;
   padding: 0;
