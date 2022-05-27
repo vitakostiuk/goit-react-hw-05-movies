@@ -4,7 +4,7 @@ import { fetchReviews } from '../services/movies-api';
 import { mapper } from '../utils/mapperReviews';
 import { ReviewsCard } from '../ReviewsCard';
 
-export const Reviews = () => {
+const Reviews = () => {
   const [reviews, setCredits] = useState([]);
   const [error, setError] = useState(null);
   const { movieId } = useParams();
@@ -13,7 +13,7 @@ export const Reviews = () => {
     const getActorsInfo = async () => {
       try {
         let data = await fetchReviews(movieId);
-        setCredits(mapper(data.results));
+        setCredits([...mapper(data.results)]);
       } catch (error) {
         setError(error);
       }
@@ -28,3 +28,5 @@ export const Reviews = () => {
     </>
   );
 };
+
+export default Reviews;

@@ -4,7 +4,7 @@ import { fetchCast } from '../services/movies-api';
 import { mapper } from '../utils/mapperActors';
 import { ActorsList } from '../ActorsList';
 
-export const Cast = () => {
+const Cast = () => {
   const [credits, setCredits] = useState([]);
   const [error, setError] = useState(null);
   const { movieId } = useParams();
@@ -13,7 +13,7 @@ export const Cast = () => {
     const getActorsInfo = async () => {
       try {
         let data = await fetchCast(movieId);
-        setCredits(mapper(data.cast));
+        setCredits([...mapper(data.cast)]);
       } catch (error) {
         setError(error);
       }
@@ -28,3 +28,5 @@ export const Cast = () => {
     </>
   );
 };
+
+export default Cast;

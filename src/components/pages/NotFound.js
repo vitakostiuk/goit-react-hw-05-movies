@@ -1,9 +1,11 @@
-import { HomePage } from './HomePage';
+import HomePage from './HomePage';
 
-export const NotFound = () => {
+const NotFound = () => {
   return (
     <>
       <HomePage />
     </>
   );
 };
+
+export default NotFound;

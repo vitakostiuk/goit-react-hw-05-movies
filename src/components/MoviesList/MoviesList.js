@@ -8,14 +8,16 @@ export const MoviesList = ({ movies }) => {
       {movies &&
         movies.map(({ id, normalizedTitle, normalizedPoster }) => (
           <Link to={`/movies/${id}`} key={id} className={s.Item}>
-            <img
-              src={normalizedPoster}
-              alt={normalizedTitle}
-              width="150"
-              height="225"
-              className={s.Img}
-            />
-            <h2 className={s.Title}>{normalizedTitle}</h2>
+            <div className={s.Wrapper}>
+              <img
+                src={normalizedPoster}
+                alt={normalizedTitle}
+                width="150"
+                height="225"
+                className={s.Img}
+              />
+              <h2 className={s.Title}>{normalizedTitle}</h2>
+            </div>
           </Link>
         ))}
     </ul>

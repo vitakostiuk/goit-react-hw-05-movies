@@ -1,21 +1,34 @@
-import { useState, useEffect } from 'react';
-import { Route, useRouteMatch, NavLink, useParams } from 'react-router-dom';
+import { useState, useEffect, lazy, Suspense } from 'react';
+import {
+  Route,
+  useRouteMatch,
+  NavLink,
+  useParams,
+  useHistory,
+} from 'react-router-dom';
 import { fetchMovieById } from '../services/movies-api';
 import { MovieCard } from '../MovieCard';
 import emptyImg from '../../images/img_not_found.jpg';
-import { Cast } from './Cast';
-import { Reviews } from './Reviews';
+// import { Cast } from './Cast';
+// import { Reviews } from './Reviews';
 import { Container } from '../Container';
+import { GoToBack } from '../GoToBack';
 import s from './MovieDetailsPage.module.css';
 
-export const MovieDetailsPage = () => {
-  // const params = useParams();
-  // console.log(params);
-  const { movieId } = useParams();
+const Cast = lazy(() => import('./Cast.js' /* webpackChunkName: 'Cast' */));
+const Reviews = lazy(() =>
+  import('./Reviews.js' /* webpackChunkName: 'Reviews' */)
+);
+
+const MovieDetailsPage = () => {
   const [movie, setMovie] = useState({});
   const [error, setError] = useState(null);
 
+  const { movieId } = useParams();
   const { url, path } = useRouteMatch();
+  // console.log(url);
+  const history = useHistory();
+  // console.log(history);
 
   useEffect(() => {
     const fetchMovieInfo = async () => {
@@ -53,11 +66,20 @@ export const MovieDetailsPage = () => {
     fetchMovieInfo();
   }, [movieId]);
 
+  const onClickGoBack = () => {
+    history.push('/');
+  };
+
+  // const onClickGoBack = () => {
+  //   history.push(`${url}/${search}`);
+  // };
+
   return (
     <>
       {error && <div>{error.message}</div>}
       <Container>
-        {movie && <MovieCard movie={movie} />}
+        <GoToBack onClick={onClickGoBack} />
+        {movie && <MovieCard movie={movie} onClick={onClickGoBack} />}
         <div className={s.Wrapper}>
           <NavLink
             to={`${url}/cast`}
@@ -74,13 +96,17 @@ export const MovieDetailsPage = () => {
             Reviews
           </NavLink>
         </div>
-        <Route path={`${path}/cast`}>
-          <Cast />
-        </Route>
-        <Route path={`${path}/reviews`}>
-          <Reviews />
-        </Route>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Route path={`${path}/cast`}>
+            <Cast />
+          </Route>
+          <Route path={`${path}/reviews`}>
+            <Reviews />
+          </Route>
+        </Suspense>
       </Container>
     </>
   );
 };
+
+export default MovieDetailsPage;

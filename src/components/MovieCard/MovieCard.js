@@ -12,20 +12,22 @@ export const MovieCard = ({ movie }) => {
   } = movie;
 
   return (
-    <div className={s.Wrapper}>
-      <img src={normalizedPoster} alt={title} width="250" className={s.Img} />
+    <>
+      <div className={s.Wrapper}>
+        <img src={normalizedPoster} alt={title} width="250" className={s.Img} />
 
-      <div className={s.Thumb}>
-        <h2>
-          {title}({normalizedYear})
-        </h2>
-        <p className={s.Paragraf}>User score: {normalizedPopularity}</p>
-        <h3 className={s.Subtitle}>Overview</h3>
-        <p className={s.Paragraf}>{overview}</p>
-        <h3 className={s.Subtitle}>Genres</h3>
-        <p className={s.Paragraf}>{normalizedGenres}</p>
+        <div className={s.Thumb}>
+          <h2>
+            {title}({normalizedYear})
+          </h2>
+          <p className={s.Paragraf}>User score: {normalizedPopularity}</p>
+          <h3 className={s.Subtitle}>Overview</h3>
+          <p className={s.Paragraf}>{overview}</p>
+          <h3 className={s.Subtitle}>Genres</h3>
+          <p className={s.Paragraf}>{normalizedGenres}</p>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

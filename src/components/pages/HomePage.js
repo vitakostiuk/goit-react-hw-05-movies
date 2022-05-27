@@ -4,7 +4,7 @@ import { MoviesList } from '../MoviesList';
 import { Container } from '../Container';
 import { mapper } from '../utils/mapper';
 
-export const HomePage = () => {
+const HomePage = () => {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
 
@@ -12,7 +12,7 @@ export const HomePage = () => {
     const getMoviesTrending = async () => {
       try {
         let data = await fetchTrending();
-        setMovies(mapper(data.results));
+        setMovies([...mapper(data.results)]);
       } catch (error) {
         setError(error);
       }
@@ -27,3 +27,5 @@ export const HomePage = () => {
     </Container>
   );
 };
+
+export default HomePage;
