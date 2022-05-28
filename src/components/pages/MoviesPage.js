@@ -7,7 +7,9 @@ import { useLocation, useHistory } from 'react-router-dom';
 import { mapper } from '../utils/mapper';
 
 const MoviesPage = () => {
-  const [filmName, setFilmName] = useState('');
+  const [filmName, setFilmName] = useState(
+    () => JSON.parse(localStorage.getItem('filmName')) ?? ''
+  );
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
 
@@ -28,17 +30,18 @@ const MoviesPage = () => {
       }
     };
     getSearchMovies();
+    window.localStorage.setItem('filmName', JSON.stringify(filmName));
   }, [filmName]);
 
   const onSearchFilmsSubmit = filmName => {
-    setFilmName(filmName);
     history.push({ ...location, search: `query=${filmName}` });
+    setFilmName(filmName);
   };
 
   return (
     <Container>
       <SearchForm onSubmit={onSearchFilmsSubmit} />
-      {movies && <MoviesList movies={movies} location={location} />}
+      {movies && <MoviesList movies={movies} />}
       {error && <div>{error.message}</div>}
     </Container>
   );

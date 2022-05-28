@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import s from './MovieCard.module.css';
-// import { useLocation } from 'react-router-dom';
 
 export const MovieCard = ({ movie }) => {
   const {
@@ -11,9 +10,6 @@ export const MovieCard = ({ movie }) => {
     normalizedYear,
     normalizedPopularity,
   } = movie;
-
-  // const location = useLocation();
-  // console.log(location);
 
   return (
     <>

@@ -22,16 +22,17 @@ const Reviews = lazy(() =>
 );
 
 const MovieDetailsPage = () => {
+  const location = useLocation();
+
   const [movie, setMovie] = useState({});
   const [error, setError] = useState(null);
+  const [link] = useState(() => location?.state?.from);
 
   const { movieId } = useParams();
   const { url, path } = useRouteMatch();
-  console.log(url);
   const history = useHistory();
-  const location = useLocation();
   // console.log(history);
-  console.log(location);
+  // console.log(location.state.from);
 
   useEffect(() => {
     const fetchMovieInfo = async () => {
@@ -70,7 +71,7 @@ const MovieDetailsPage = () => {
   }, [movieId]);
 
   const onClickGoBack = () => {
-    history.push(location?.state?.from ?? '/movies');
+    history.push(link);
   };
 
   return (
@@ -81,14 +82,14 @@ const MovieDetailsPage = () => {
         {movie && <MovieCard movie={movie} />}
         <div className={s.Wrapper}>
           <NavLink
-            to={`${url}/cast`}
+            to={{ pathname: `${url}/cast`, state: { from: location } }}
             className={s.Link}
             activeClassName={s.Active}
           >
             Cast
           </NavLink>
           <NavLink
-            to={`${url}/reviews`}
+            to={{ pathname: `${url}/reviews`, state: { from: location } }}
             className={s.Link}
             activeClassName={s.Active}
           >
@@ -97,10 +98,10 @@ const MovieDetailsPage = () => {
         </div>
         <Suspense fallback={<div>Loading...</div>}>
           <Route path={`${path}/cast`}>
-            <Cast location={location} />
+            <Cast />
           </Route>
           <Route path={`${path}/reviews`}>
-            <Reviews location={location} />
+            <Reviews />
           </Route>
         </Suspense>
       </Container>

@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 import { fetchTrending } from '../services/movies-api';
 import { MoviesList } from '../MoviesList';
 import { Container } from '../Container';
@@ -9,7 +8,7 @@ const HomePage = () => {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
 
-  const location = useLocation();
+  window.localStorage.clear();
 
   useEffect(() => {
     const getMoviesTrending = async () => {
@@ -26,7 +25,7 @@ const HomePage = () => {
   return (
     <Container>
       {error && <div>{error.message}</div>}
-      <MoviesList movies={movies} location={location} />
+      <MoviesList movies={movies} />
     </Container>
   );
 };
